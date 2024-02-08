@@ -11,7 +11,7 @@ const getMusic = async () => {
 
    
 
-    const res = await fetch(`${process.env.BASE_URL}/api/Music`, {
+    const res = await fetch("https://soundvista.vercel.app/api/Music", {
       cache: "no-store",
       
    
