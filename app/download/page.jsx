@@ -8,11 +8,10 @@ import User from '@/models/User'; // Adjust the path accordingly
 
 const getMusic = async () => {
   try {
-   // const urls = "http://localhost:3000"
-   const urls= "https://soundvista.vercel.app"
+
    
 
-    const res = await fetch(urls + "/api/Music", {
+    const res = await fetch(`${process.env.BASE_URL}/api/Music`, {
       cache: "no-store",
       
    

@@ -9,7 +9,7 @@ const getMusic = async () => {
 
 
 
-    const res = await fetch("http://localhost:3000/api/Music", {
+    const res = await fetch(`${process.env.BASE_URL}/api/Music`, {
       cache: "no-store",
       
    

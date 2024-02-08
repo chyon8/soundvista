@@ -23,7 +23,7 @@ const authOptions = {
           const userExists = await User.findOne({ email });
 
           if (!userExists) {
-            const res = await fetch("https://soundvista.vercel.app/api/user", {
+            const res = await fetch(`${process.env.BASE_URL}/api/user`, {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
