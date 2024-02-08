@@ -4,6 +4,9 @@ import { getServerSession } from 'next-auth';
 import { NextResponse } from 'next/server';
 import User from '@/models/User'; // Adjust the path accordingly
 
+
+export const dynamic = 'force-dynamic'
+
 export async function GET() {
   try {
     const session = await getServerSession();
