@@ -12,7 +12,8 @@ const PlayBlock = () => {
 
  const { seekbarData } = useAudioContext();
 
-const audioTag = document.getElementById('music')
+
+
 
 useEffect(() => {
   setIsPlaying(seekbarData ? seekbarData.isPlaying : false);
@@ -21,7 +22,7 @@ useEffect(() => {
   const playMusic = async () => {
     try {
     
- 
+      const audioTag = document.getElementById('music')
 
       if (audioTag.src) {
         if (isPlaying) {
