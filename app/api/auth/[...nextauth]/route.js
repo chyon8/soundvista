@@ -3,6 +3,9 @@ import User from "@/models/User";
 import NextAuth from "next-auth/next";
 import GoogleProvider from "next-auth/providers/google";
 
+export const dynamic = 'force-dynamic'
+
+
 const authOptions = {
 
   providers: [
