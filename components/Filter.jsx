@@ -51,7 +51,7 @@ const [selectedGenre, setSelectedGenre] = useState('');
    <div className="filter-container">
    
    
-   <label className=" max-md:flex"  htmlFor="mood">Mood: </label>
+   <label className=" max-sm:flex"  htmlFor="mood">Mood: </label>
 
    <select id="mood" onChange={(e)=>setSelectedMood(e.target.value)} value={selectedMood} >
      <option value="" disabled selected>
@@ -66,7 +66,7 @@ const [selectedGenre, setSelectedGenre] = useState('');
    </select>
 
 
-   <label className="max-md:flex" htmlFor="genre">Genre:</label>
+   <label className="max-sm:flex" htmlFor="genre">Genre:</label>
    
    <select id="genre" onChange={(e)=> setSelectedGenre(e.target.value)} value={selectedGenre}>
      <option value="" disabled selected>

@@ -1,9 +1,12 @@
 import Music from "@/models/Music";
 import { NextResponse } from "next/server";
 
+
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
-    const music = await Music.find();
+    const music = await Music.find().sort({ createdAt: 'desc' });
 
 
     return NextResponse.json({ music }, { status: 200 });

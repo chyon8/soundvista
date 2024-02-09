@@ -29,6 +29,7 @@ const Dashboard = async () => {
   const data = await getMusic();
 
 
+
   // Make sure we have tickets needed for production build.
   if (!data?.music) {
     return <p>No music.</p>;
