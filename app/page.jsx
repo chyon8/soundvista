@@ -3,24 +3,24 @@
 import Filter from "@/components/Filter";
 import Pagination from "@/components/Pagination";
 import { useSearchParams } from 'next/navigation'
-
+import { useState } from "react";
 
 
 
 const Dashboard = async () => {
 
   const searchParams = useSearchParams()
-  const page = searchParams.get('page')
+  const page = searchParams.get('page') || 1
+  const [params,setParams]= useState(page)
 
   const getMusic = async () => {
     try {
   
       
+    
+  
+     const res = await fetch(`http://localhost:3000/api/Music?page=${params}`, {
      
-  
-  
-    // const res = await fetch(`https://soundvista.vercel.app/api/Music?page=${1}`, {
-      const res = await fetch(`https://soundvista.vercel.app/api/Music?page=${page}`, {
     
         cache: "no-store",
         
@@ -60,8 +60,6 @@ const Dashboard = async () => {
   music.genre))
 
   const uniquegenreArray = genreFilter.flat().filter((value, index, self) => self.indexOf(value) === index);
-
-
 
 
   return (

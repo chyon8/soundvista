@@ -1,8 +1,10 @@
+
 "use client"
 
 import Filter from "@/components/Filter";
 import Pagination from "@/components/Pagination";
 import { useSearchParams } from 'next/navigation'
+import { useState } from "react";
 
 
 
@@ -15,13 +17,17 @@ const Dashboard = async () => {
     const page = searchParams.get('page') || 1
     const mood = searchParams.get('mood') || ""
     const genre = searchParams.get('genre') || ""
-    
+    const [params,setParams]= useState({page:page,mood:mood,genre:genre})
+    console.log(params)
+   
+   
 const getMusic = async () => {
     try {
-  
-  
+   
 
-      const res = await fetch(`https://soundvista.vercel.app/api/Music/Sort?page=${page}&mood=${mood}&genre=${genre}`, {
+
+      const res = await fetch(`https://soundvista.vercel.app/api/Music/Sort?page=${params.page}&mood=${params.mood}&genre=${params.genre}`, {
+
     
         cache: "no-store",
         
@@ -33,10 +39,14 @@ const getMusic = async () => {
       }
   
       return res.json();
+   
     } catch (error) {
       console.log("Error loadinag topics: ", error);
     }
+
   };
+
+
   const data = await getMusic();
 
 
@@ -106,6 +116,7 @@ const getMusic = async () => {
 };
 
 export default Dashboard;
+
 
 
 
