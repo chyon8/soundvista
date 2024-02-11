@@ -9,36 +9,29 @@ import Tabs from "./Tabs";
 
 
 
+const Filter = async ({filter_mood,filter_genre, allSongs}) => {
 
-const Filter =  ({filter_mood,filter_genre, allSongs}) => {
 
 
 
   
 const [selectedMood, setSelectedMood] = useState('');
 const [selectedGenre, setSelectedGenre] = useState('');
-const [filteredSongs, setFilteredSongs] = useState(allSongs);
+  const [filteredSongs, setFilteredSongs] = useState(allSongs);
 
-/*
   const filterSongs = () => {
-
-
-
-
-console.log(selectedMood)
-
-console.log(selectedGenre)
-   
-
-  
- 
+    // Filter the songs based on selected mood and genre
+    const filteredSongs = allSongs.filter((song) => {
+      const isMoodMatch = selectedMood === '' || song.mood.includes(selectedMood);
+      const isGenreMatch = selectedGenre === '' || song.genre.includes(selectedGenre);
+      return isMoodMatch && isGenreMatch;
+    });
 
     // Handle filteredSongs as needed (e.g., pass it to another component)
     setFilteredSongs(filteredSongs);
   };
-*/
 
-/*
+
   const resetFilter = async () => {
     // Reset the filter by clearing the selected mood and genre
     setSelectedMood('');
@@ -47,7 +40,7 @@ console.log(selectedGenre)
     setFilteredSongs(allSongs);
   };
 
-*/
+
 
   
 
@@ -96,11 +89,11 @@ console.log(selectedGenre)
    
 
 <div className="button-container flex">
-<a href={`/sort?mood=${selectedMood}&genre=${selectedGenre}`}
-    className="flex mt-3 ml-2">Apply</a>
+<button onClick={filterSongs}
+    className="flex mt-3 ml-2">Apply</button>
 
-<a href="/"
-    className="flex mt-3 ml-2">Reset</a>
+<button onClick={resetFilter}
+    className="flex mt-3 ml-2">Reset</button>
 </div>
 
 

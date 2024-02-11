@@ -7,24 +7,37 @@ export const dynamic = 'force-dynamic';
 export async function GET(req) {
   try {
 
+
+    const mood = req.nextUrl.searchParams.get('mood');
+    const genre = req.nextUrl.searchParams.get('genre');
+
     const page = req.nextUrl.searchParams.get('page') || 1;
+
+    const filters = {};
+    if (mood) {
+      filters.mood = mood;
+    }
+    if (genre) {
+      filters.genre = genre;
+    }
  
 
 
-   // const currentPage = parseInt(page) || 1;
+
+ 
     const limit = 10;
-    const totalCount = await Music.countDocuments();
+    const totalCount = await Music.countDocuments(filters);
     const totalPages = Math.ceil(parseFloat(totalCount/limit))
    
 
 
-    const music = await Music.find().sort({ createdAt: 'desc' })
+    const music = await Music.find(filters).sort({ createdAt: 'desc' })
       .skip((page - 1) * limit)
       .limit(limit);
 
    
     return NextResponse.json({ music,
-      page,
+        page,
       totalPages,
        totalCount},
        { status: 200 });

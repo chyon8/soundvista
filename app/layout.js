@@ -28,9 +28,10 @@ export default function RootLayout({ children }) {
       
       {children}
     
-         
+
  
     </div>
+
    <Footer/>
           </div>
           </TabsProvider>
