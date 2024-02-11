@@ -6,7 +6,7 @@ import { useSearchParams } from 'next/navigation'
 
 
 
-const getMusic = async () => {
+const GetMusic = async () => {
     try {
       
       const searchParams = useSearchParams()
@@ -35,7 +35,7 @@ const getMusic = async () => {
   
 
 const Dashboard = async () => {
-  const data = await getMusic();
+  const data = await GetMusic();
 
 
   if (!data?.music) {

@@ -5,7 +5,7 @@ import Pagination from "@/components/Pagination";
 import { useSearchParams } from 'next/navigation'
 
 
-const getMusic = async () => {
+const GetMusic = async () => {
   try {
 
     
@@ -32,7 +32,7 @@ const getMusic = async () => {
 };
 
 const Dashboard = async () => {
-  const data = await getMusic();
+  const data = await GetMusic();
 
 
 
