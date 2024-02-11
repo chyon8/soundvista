@@ -12,8 +12,8 @@ const Dashboard = () => {
   const [data, setData] = useState(null);
 
   const getMusic = () => {
-   // fetch(`https://soundvista.vercel.app/api/Music?page=${params}`, {
-      fetch(`http://localhost:3000/api/Music?page=${params}`, {
+    fetch(`https://soundvista.vercel.app/api/Music?page=${params}`, {
+     // fetch(`http://localhost:3000/api/Music?page=${params}`, {
       cache: "no-store",
     })
       .then((res) => {
