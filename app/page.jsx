@@ -12,7 +12,8 @@ const Dashboard = () => {
   const [data, setData] = useState(null);
 
   const getMusic = () => {
-    fetch(`https://soundvista.vercel.app/api/Music?page=${params}`, {
+   // fetch(`https://soundvista.vercel.app/api/Music?page=${params}`, {
+      fetch(`http://localhost:3000/api/Music?page=${params}`, {
       cache: "no-store",
     })
       .then((res) => {
@@ -45,7 +46,7 @@ const Dashboard = () => {
   const uniquegenreArray = genreFilter.flat().filter((value, index, self) => self.indexOf(value) === index);
 
   return (
-    <div className="p-8">
+    <div className="p-8 max-sm:p-5">
       <div>
         <div className="p-8">
           <Filter filter_mood={uniqueMoodArray} filter_genre={uniquegenreArray} allSongs={musics}></Filter>
