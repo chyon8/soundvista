@@ -6,7 +6,12 @@ import { useSearchParams } from 'next/navigation'
 
 
 
-const GetMusic = async () => {
+  
+
+const Dashboard = async () => {
+
+
+const getMusic = async () => {
     try {
       
       const searchParams = useSearchParams()
@@ -14,8 +19,7 @@ const GetMusic = async () => {
       const mood = searchParams.get('mood') || ""
       const genre = searchParams.get('genre') || ""
   
-  
-    // const res = await fetch(`https://soundvista.vercel.app/api/Music?page=${1}`, {
+
       const res = await fetch(`https://soundvista.vercel.app/api/Music/Sort?page=${page}&mood=${mood}&genre=${genre}`, {
     
         cache: "no-store",
@@ -32,10 +36,7 @@ const GetMusic = async () => {
       console.log("Error loadinag topics: ", error);
     }
   };
-  
-
-const Dashboard = async () => {
-  const data = await GetMusic();
+  const data = await getMusic();
 
 
   if (!data?.music) {

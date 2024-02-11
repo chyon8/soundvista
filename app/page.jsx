@@ -5,34 +5,36 @@ import Pagination from "@/components/Pagination";
 import { useSearchParams } from 'next/navigation'
 
 
-const GetMusic = async () => {
-  try {
 
-    
-    const searchParams = useSearchParams()
-    const page = searchParams.get('page')
-
-
-  // const res = await fetch(`https://soundvista.vercel.app/api/Music?page=${1}`, {
-    const res = await fetch(`https://soundvista.vercel.app/api/Music?page=${page}`, {
-  
-      cache: "no-store",
-      
-   
-    });
-
-    if (!res.ok) {
-      throw new Error("Failed to fetch topics");
-    }
-
-    return res.json();
-  } catch (error) {
-    console.log("Error loadinag topics: ", error);
-  }
-};
 
 const Dashboard = async () => {
-  const data = await GetMusic();
+
+  const getMusic = async () => {
+    try {
+  
+      
+      const searchParams = useSearchParams()
+      const page = searchParams.get('page')
+  
+  
+    // const res = await fetch(`https://soundvista.vercel.app/api/Music?page=${1}`, {
+      const res = await fetch(`https://soundvista.vercel.app/api/Music?page=${page}`, {
+    
+        cache: "no-store",
+        
+     
+      });
+  
+      if (!res.ok) {
+        throw new Error("Failed to fetch topics");
+      }
+  
+      return res.json();
+    } catch (error) {
+      console.log("Error loadinag topics: ", error);
+    }
+  };
+  const data = await getMusic();
 
 
 
