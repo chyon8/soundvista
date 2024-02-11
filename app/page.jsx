@@ -9,12 +9,14 @@ import { useSearchParams } from 'next/navigation'
 
 const Dashboard = async () => {
 
+  const searchParams = useSearchParams()
+  const page = searchParams.get('page')
+
   const getMusic = async () => {
     try {
   
       
-      const searchParams = useSearchParams()
-      const page = searchParams.get('page')
+     
   
   
     // const res = await fetch(`https://soundvista.vercel.app/api/Music?page=${1}`, {

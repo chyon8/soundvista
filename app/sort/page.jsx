@@ -10,14 +10,15 @@ import { useSearchParams } from 'next/navigation'
 
 const Dashboard = async () => {
 
-
+    
+    const searchParams = useSearchParams()
+    const page = searchParams.get('page') || 1
+    const mood = searchParams.get('mood') || ""
+    const genre = searchParams.get('genre') || ""
+    
 const getMusic = async () => {
     try {
-      
-      const searchParams = useSearchParams()
-      const page = searchParams.get('page') || 1
-      const mood = searchParams.get('mood') || ""
-      const genre = searchParams.get('genre') || ""
+  
   
 
       const res = await fetch(`https://soundvista.vercel.app/api/Music/Sort?page=${page}&mood=${mood}&genre=${genre}`, {
