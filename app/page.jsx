@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Filter from "@/components/Filter";
 import Pagination from "@/components/Pagination";
 import { useSearchParams } from 'next/navigation';
+import Skeleton from "@/components/Skeleton";
 
 const Dashboard = () => {
   const searchParams = useSearchParams();
@@ -34,7 +35,8 @@ const Dashboard = () => {
   getMusic();
 
   if (!data?.music) {
-    return <p>loading..</p>;
+    return <Skeleton/>
+    ;
   }
 
   const musics = data.music;
