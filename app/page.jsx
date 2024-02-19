@@ -51,7 +51,7 @@ const Dashboard = () => {
     <div className="p-8 max-sm:p-5">
       <div>
         <div className="p-8">
-          <Filter filter_mood={uniqueMoodArray} filter_genre={uniquegenreArray} allSongs={musics}></Filter>
+          <Filter total={data?.totalCount} filter_mood={uniqueMoodArray} filter_genre={uniquegenreArray} allSongs={musics}></Filter>
           <Pagination page={data?.totalPages} now={data?.page}></Pagination>
         </div>
       </div>

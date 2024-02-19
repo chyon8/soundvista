@@ -10,7 +10,7 @@ import Tabs from "./Tabs";
 
 
 
-const Filter =  ({filter_mood,filter_genre, allSongs}) => {
+const Filter =  ({filter_mood,filter_genre, allSongs,total}) => {
 
 
 
@@ -108,7 +108,8 @@ console.log(selectedGenre)
 
 </div>
 
-
+<br />
+<p className="text-slate-500">Total: {total}</p> 
 <div className="music-list mt-5">
 {filteredSongs.length > 0 ? (
           filteredSongs.map((music) => <MusicList key={music._id} music={music} />)

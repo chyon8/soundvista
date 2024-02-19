@@ -16,6 +16,7 @@ const Dashboard = () => {
 
   const getMusic = useCallback(() => {
     fetch(`https://soundvista.vercel.app/api/Music/Sort?page=${params.page}&mood=${params.mood}&genre=${params.genre}`, {
+
       cache: "no-store",
     })
       .then((res) => {
@@ -51,7 +52,7 @@ const Dashboard = () => {
     <div className="p-8">
       <div>
         <div className="p-8">
-          <Filter filter_mood={uniqueMoodArray} filter_genre={uniquegenreArray} allSongs={musics}></Filter>
+          <Filter total={data?.totalCount} filter_mood={uniqueMoodArray} filter_genre={uniquegenreArray} allSongs={musics}></Filter>
           <Pagination page={data?.totalPages} now={data?.page}></Pagination>
         </div>
       </div>
