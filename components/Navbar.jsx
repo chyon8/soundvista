@@ -11,6 +11,8 @@ export default function Navbar() {
         SoundVista
       </Link>
 
+      <a className="text-lg text-slate-600" href={"access"}>Get Access</a>
+
   
 
      

@@ -49,6 +49,7 @@ const Dashboard = () => {
 
   return (
     <div className="p-8 max-sm:p-5">
+      
       <div>
         <div className="p-8">
           <Filter total={data?.totalCount} filter_mood={uniqueMoodArray} filter_genre={uniquegenreArray} allSongs={musics}></Filter>
