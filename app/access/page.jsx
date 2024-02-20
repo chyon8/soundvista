@@ -32,7 +32,7 @@ const Access = async () => {
     
     <div className="p-8">
 
-      <p>Please send us the form to get access to music</p>
+
 
       <iframe data-tally-src="https://tally.so/embed/n9DJ4K?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="1039" frameborder="0" marginheight="0" marginwidth="0" title="soundvista"></iframe>
    
