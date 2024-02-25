@@ -26,8 +26,8 @@ const Terms = async () => {
 <br/>
 
     <strong>1. Grant of License:</strong>
-    <p>1.1 Subject to compliance with these terms, Soundvista ("Licensor") grants you ("User") a non-exclusive, non-transferable license to use the royalty-free music provided on this site ("Music") for personal or commercial purposes.</p>
-
+    <p>1.1 Subject to compliance with these terms, Soundvista (&quot;Licensor&quot;) grants you (&quot;User&quot;) a non-exclusive, non-transferable license to use the royalty-free music provided on this site (&quot;Music&quot;) for personal or commercial purposes.</p>
+    
   <br />
 
    <strong>2. Restrictions:</strong> 
@@ -36,7 +36,7 @@ const Terms = async () => {
 
 <br />
 <strong>3. Content ID System:</strong>
-    <p>3.1 User expressly agrees not to submit the Music to any Content ID system, including but not limited to YouTube's Content ID system.</p>
+<p>3.1 User expressly agrees not to submit the Music to any Content ID system, including but not limited to YouTube&apos;s Content ID system.</p>
     <p>3.2 User shall not claim ownership or authorship of the Music in any manner.</p>
 
 <br />
