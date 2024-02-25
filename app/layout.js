@@ -30,12 +30,18 @@ export default function RootLayout({ children }) {
           <div className="flex flex-col h-screen max-h-screen">
             <Navbar />
             <div className="flex-grow overflow-y-auto bg-page text-default-text">
-      
+         
       {children}
-    
+      
+<a href="/terms" target="_blank" class="flex justify-center"> 
+Terms and Conditions 2024
+</a>
+     
 
  
     </div>
+
+
 
    <Footer/>
           </div>

@@ -20,6 +20,8 @@ const Footer = ({ audioFile}) => {
 
 
   return (
+   
+
 
     <div className={`bg-black text-white p-5 ${seekbarData ? 'block' : 'hidden'}`}>
 
