@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Filter from "@/components/Filter";
 import Pagination from "@/components/Pagination";
 import { useSearchParams } from 'next/navigation';
@@ -11,48 +11,55 @@ const Dashboard = () => {
   const page = searchParams.get('page') || 1;
   const [params, setParams] = useState(page);
   const [data, setData] = useState(null);
+  const [mood, ] = useState([
+    'uplifting','nostalgic','cute','epic','rainy','happy','dramatic','tense','dark',
+    'sad','inspiring', 'calm', 'atmospheric','sentimental','dreamy','chill'
+  ]);
+  const [genre, ] = useState([
+    'lofi','hiphop','jazz','rnb','soul','disco','rock','indie','electronic','ballad',
+    'pop','citypop','funk'
+  ]);
+ 
 
-  const getMusic = () => {
-    fetch(`https://soundvista.vercel.app/api/Music?page=${params}`, {
-     // fetch(`http://localhost:3000/api/Music?page=${params}`, {
-      cache: "no-store",
-    })
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error("Failed to fetch music data");
-        }
-        return res.json();
-      })
-      .then((result) => {
+  useEffect(() => {
+    const getMusic = async () => {
+      try {
+        const response = await   fetch(`https://soundvista.vercel.app/api/Music?page=${params}`, {
+         // fetch(`http://localhost:3000/api/Music?page=${params}`, {
+          cache: "no-store",
+        });
+        
+        const result = await response.json();
         setData(result);
-      })
-      .catch((error) => {
-        console.log("Error loading music data: ", error);
-      });
-  };
+       
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
 
-  // Call getMusic when the component mounts or when params change
-  getMusic();
+    getMusic();
+  }, []);
+  
 
-  if (!data?.music) {
+
+
+  if (!data?.music ) {
     return <Skeleton/>
     ;
   }
 
+
   const musics = data.music;
 
-  const moodFilter = musics.map((music) => music.mood);
-  const uniqueMoodArray = moodFilter.flat().filter((value, index, self) => self.indexOf(value) === index);
+ 
 
-  const genreFilter = musics.map((music) => music.genre);
-  const uniquegenreArray = genreFilter.flat().filter((value, index, self) => self.indexOf(value) === index);
 
   return (
     <div className="p-8 max-sm:p-5">
       
       <div>
         <div className="p-8">
-          <Filter total={data?.totalCount} filter_mood={uniqueMoodArray} filter_genre={uniquegenreArray} allSongs={musics}></Filter>
+          <Filter total={data?.totalCount} filter_mood={mood} filter_genre={genre} allSongs={musics}></Filter>
           <Pagination page={data?.totalPages} now={data?.page}></Pagination>
         </div>
       </div>

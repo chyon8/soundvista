@@ -16,6 +16,7 @@ const Dashboard = () => {
 
   const getMusic = useCallback(() => {
     fetch(`https://soundvista.vercel.app/api/Music/Sort?page=${params.page}&mood=${params.mood}&genre=${params.genre}`, {
+     // fetch(`http://localhost:3000/api/Music/Sort?page=${params.page}&mood=${params.mood}&genre=${params.genre}`, {
 
       cache: "no-store",
     })
