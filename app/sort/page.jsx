@@ -13,6 +13,14 @@ const Dashboard = () => {
   const genre = searchParams.get('genre') || "";
   const [params, setParams] = useState({ page, mood, genre });
   const [data, setData] = useState(null);
+  const [moodFilter, ] = useState([
+    'uplifting','nostalgic','cute','epic','rainy','happy','dramatic','tense','dark',
+    'sad','inspiring', 'calm', 'atmospheric','sentimental','dreamy','chill'
+  ]);
+  const [genreFilter, ] = useState([
+    'lofi','hiphop','jazz','rnb','soul','disco','rock','indie','electronic','ballad',
+    'pop','citypop','funk'
+  ]);
 
   const getMusic = useCallback(() => {
     fetch(`https://soundvista.vercel.app/api/Music/Sort?page=${params.page}&mood=${params.mood}&genre=${params.genre}`, {
@@ -43,17 +51,12 @@ const Dashboard = () => {
 
   const musics = data.music;
 
-  const moodFilter = musics.map((music) => music.mood);
-  const uniqueMoodArray = moodFilter.flat().filter((value, index, self) => self.indexOf(value) === index);
-
-  const genreFilter = musics.map((music) => music.genre);
-  const uniquegenreArray = genreFilter.flat().filter((value, index, self) => self.indexOf(value) === index);
-
+  
   return (
     <div className="p-8">
       <div>
         <div className="p-8">
-          <Filter total={data?.totalCount} filter_mood={uniqueMoodArray} filter_genre={uniquegenreArray} allSongs={musics}></Filter>
+          <Filter total={data?.totalCount} filter_mood={moodFilter} filter_genre={genreFilter} allSongs={musics}></Filter>
           <Pagination page={data?.totalPages} now={data?.page}></Pagination>
         </div>
       </div>
