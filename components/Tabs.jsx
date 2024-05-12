@@ -6,7 +6,9 @@ import { useTabsContext } from "@/app/TabsContext";
 
 
 const Tabs = () => {
+ 
   const { selectedTab, setSelectedTab } = useTabsContext();
+
 
   const handleTabClick = (tab) => {
     setSelectedTab(tab);
