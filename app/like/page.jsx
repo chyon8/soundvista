@@ -11,15 +11,13 @@ const getMusic = async () => {
   try {
    
 
-    
-
-    const res = await fetch("https://soundvista.vercel.app/api/Music", {
+    const res = await fetch(`https://soundvista.vercel.app/api/FavMusic`, {
+     // const res = await fetch(`http://localhost:3000/api/FavMusic`, {
       cache: "no-store",
       
    
     });
 
-   
 
     if (!res.ok) {
       throw new Error("Failed to fetch topics");
@@ -53,14 +51,13 @@ const Dashboard = async () => {
 
   const user = await User.findOne({ email: userEmail });
   if (!user) {
-      // Handle the case where the user is not found
       return null;
     }
 
   const favList= user.favorites
   const keysArray = Array.from(favList.keys());
 
-const foundMusic = data.music.filter(item => keysArray.includes(item._id));
+const foundMusic = data?.music.filter(item => keysArray.includes(item._id));
 
 
 
@@ -86,6 +83,7 @@ const foundMusic = data.music.filter(item => keysArray.includes(item._id));
   music.genre))
 
   const uniquegenreArray = genreFilter.flat().filter((value, index, self) => self.indexOf(value) === index);
+
 
 
 

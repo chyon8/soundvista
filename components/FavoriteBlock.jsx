@@ -15,9 +15,11 @@ const FavoriteBlock = ({ id }) => {
 
 
   const [isFavorite, setIsFavorite] = useState(false);
+  const [favoritesArray, setFavoritesArray]=useState([])
 
-
+  
   useEffect(() => {
+  
   
 
     if (sessionStatus !== "authenticated") {
@@ -26,36 +28,36 @@ const FavoriteBlock = ({ id }) => {
 
     const fetchUserData = async () => {
       try {
-        const response = await fetch(`/api/getUserFavorites`, {
-        
-        });
+        const response = await fetch(`/api/getUserFavorites`, {});
 
         if (!response.ok) {
-          // Handle error
           console.error("Failed to fetch user data");
           return;
         }
-
         const userData = await response.json();
-    
-        const favoritesArray = userData.user.favorites || [];
-        
+         setFavoritesArray(userData.user.favorites)
 
-        // Update the UI based on whether the music id is in the favorites array
-        setIsFavorite(Object.keys(favoritesArray).includes(id));
+       
         
       } catch (error) {
         console.error("Error fetching user data:", error);
       }
     };
 
-    // Fetch user data when the component mounts or when the session changes
     if (session?.user?.email) {
       fetchUserData();
     }
-  }, [id, session]);
+  }, []);
 
 
+  useEffect(() => {
+
+            
+if(Object.keys(favoritesArray).includes(id)){
+  setIsFavorite(true);
+}
+  
+  }, [favoritesArray]);
 
 
 
@@ -67,12 +69,10 @@ const FavoriteBlock = ({ id }) => {
     if (sessionStatus !== "authenticated") {
       return ;
     }
-    // Toggle the favorite status
+   
     setIsFavorite(!isFavorite);
 
-    // Update the database (you need to implement the logic to update the database here)
-    // For simplicity, let's assume you have a function updateFavoriteStatus in your API
-    // that updates the user's favorites in the database.
+
     try {
       const response = await fetch(`/api/updateFavorite`, {
         method: "POST",

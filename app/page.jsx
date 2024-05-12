@@ -38,6 +38,7 @@ const Dashboard = () => {
     };
 
     getMusic();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   
 
