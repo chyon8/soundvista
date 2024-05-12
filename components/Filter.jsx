@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import MusicList from "./MusicList";
 import Tabs from "./Tabs";
 
@@ -12,13 +12,11 @@ import Tabs from "./Tabs";
 
 const Filter =  ({filter_mood,filter_genre, allSongs,total}) => {
 
-
-
   
 const [selectedMood, setSelectedMood] = useState('');
 const [selectedGenre, setSelectedGenre] = useState('');
 const [filteredSongs, setFilteredSongs] = useState(allSongs);
-
+const [userData,setUserData]= useState(null)
 /*
   const filterSongs = () => {
 
@@ -51,6 +49,22 @@ console.log(selectedGenre)
 
   
 
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const response = await fetch(`/api/getUserFavorites`);
+      const result = await response.json();
+      setUserData(result.user);
+      
+  
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+  fetchData();
+
+}, []);
 
 
 
@@ -112,7 +126,7 @@ console.log(selectedGenre)
 <p className="text-slate-500">Total: {total}</p> 
 <div className="music-list mt-5">
 {filteredSongs.length > 0 ? (
-          filteredSongs.map((music) => <MusicList key={music._id} music={music} />)
+          filteredSongs.map((music) => <MusicList userData={userData} key={music._id} music={music} />)
         ) : (
           <p>No matching songs found.</p>
         )}

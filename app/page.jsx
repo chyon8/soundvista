@@ -24,8 +24,8 @@ const Dashboard = () => {
   useEffect(() => {
     const getMusic = async () => {
       try {
-        const response = await fetch(`https://soundvista.vercel.app/api/Music?page=${params}`, {
-        //  const response = await fetch(`http://localhost:3000/api/Music?page=${params}`, {
+       // const response = await fetch(`https://soundvista.vercel.app/api/Music?page=${params}`, {
+         const response = await fetch(`http://localhost:3000/api/Music?page=${params}`, {
       
           cache: "no-store",
         });

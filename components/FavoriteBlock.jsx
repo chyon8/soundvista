@@ -9,14 +9,16 @@ import { useSession } from "next-auth/react";
 
 
 
-const FavoriteBlock = ({ id }) => {
+const FavoriteBlock = ({ id,userData }) => {
 
   const {  data: session, status:sessionStatus } = useSession();
 
 
   const [isFavorite, setIsFavorite] = useState(false);
-  const [favoritesArray, setFavoritesArray]=useState([])
 
+
+ 
+/*
   
   useEffect(() => {
   
@@ -50,6 +52,8 @@ const FavoriteBlock = ({ id }) => {
   }, []);
 
 
+
+
   useEffect(() => {
 
             
@@ -59,7 +63,20 @@ if(Object.keys(favoritesArray).includes(id)){
   
   }, [favoritesArray]);
 
+*/
 
+
+useEffect(() => {
+
+//setFavoritesArray(userData)
+
+if(userData && Object.keys(userData.favorites).includes(id)){
+  setIsFavorite(true);
+}
+
+ }, [userData]);
+
+ console.log(userData)
 
 
   const addToFavorite = async (e) => {

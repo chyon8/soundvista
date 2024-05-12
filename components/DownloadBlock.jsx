@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useSession } from "next-auth/react";
 
 
-const DownloadBlock = ({ id,audioFileTitle }) => {
+const DownloadBlock = ({ id,audioFileTitle,userData }) => {
 
   const {  data: session, status:sessionStatus } = useSession();
 
@@ -16,7 +16,7 @@ const DownloadBlock = ({ id,audioFileTitle }) => {
   const [isDownload, setIsDownload] = useState(false);
   const [isSubscribed, setIsSubscribed] = useState(false);
 
-
+/*
   useEffect(() => {
 
     if (sessionStatus !== "authenticated") {
@@ -57,10 +57,18 @@ const DownloadBlock = ({ id,audioFileTitle }) => {
     }
   }, [id, session]);
 
+*/
 
 
+useEffect(() => {
 
-
+  
+  if(userData && Object.keys(userData.downloads).includes(id)){
+    setIsFavorite(true);
+  }
+  
+   }, [userData]);
+  
 
   const addToDownload = async (e) => {
     e.stopPropagation();

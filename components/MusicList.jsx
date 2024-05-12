@@ -8,7 +8,7 @@ import DownloadBlock from "./DownloadBlock";
 
 
 
-const MusicList = ({ music }) => {
+const MusicList = ({ music,userData }) => {
 
   const { updateSeekbarData } = useAudioContext();
   const [isPlaying, setIsPlaying] = useState(false);
@@ -57,10 +57,10 @@ const MusicList = ({ music }) => {
 
         <div className="ml-auto mt-2 flex overflow-hidden">
 
-<div className="flex"> <FavoriteBlock id={music._id}></FavoriteBlock></div>
+<div className="flex"> <FavoriteBlock userData={userData} id={music._id}></FavoriteBlock></div>
    
 
-<div className="ml-5 flex "><DownloadBlock id={music._id} audioFileTitle={music.audiofile} ></DownloadBlock></div>
+<div className="ml-5 flex "><DownloadBlock userData={userData} id={music._id} audioFileTitle={music.audiofile} ></DownloadBlock></div>
     
         </div>
 
