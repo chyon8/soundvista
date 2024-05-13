@@ -36,7 +36,7 @@ useEffect(() => {
     if (!isSubscribed) {
 
         console.log("User is not subscribed. Download is not allowed.");
-        router.push('/access')
+        router.replace('/access')
         return;
       }
 

@@ -5,7 +5,7 @@ import FavoriteBlock from "./FavoriteBlock";
 import { useAudioContext } from "@/app/AudioContext";
 import { useState } from "react";
 import DownloadBlock from "./DownloadBlock";
-
+import Image from "next/image";
 
 
 const MusicList = ({ music,userData }) => {
@@ -40,10 +40,10 @@ const MusicList = ({ music,userData }) => {
     <div onClick={handleClick} className="flex mb-4 flex-col hover:bg-card-hover bg-card rounded-md shadow-lg p-3 m-2">
       <div className="flex mt-1 ">
 
-        <img className="w-9 h-9" src={`https://source.unsplash.com/${music.artwork}`} />
+        <Image className="w-9 h-9" src={`https://source.unsplash.com/${music.artwork}`} alt="thumbnail" width={9} height={9} />
 
 <div className="ml-4 mt-2 w-1/6 flex ">
-        <p className="mr-3 w-12 whitespace-nowrap overflow-hidden text-ellipsis ">{music.title}</p>   
+        <p className="mr-3  whitespace-nowrap overflow-hidden text-ellipsis ">{music.title}</p>   
 </div>
 
 

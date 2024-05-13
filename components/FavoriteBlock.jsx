@@ -76,7 +76,7 @@ if(userData && Object.keys(userData.favorites).includes(id)){
 
  }, [userData]);
 
- console.log(userData)
+
 
 
   const addToFavorite = async (e) => {
