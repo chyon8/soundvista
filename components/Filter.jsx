@@ -81,7 +81,7 @@ useEffect(() => {
    
    <label className=" max-sm:flex"  htmlFor="mood">Mood: </label>
 
-   <select id="mood" onChange={(e)=>setSelectedMood(e.target.value)} value={selectedMood} >
+   <select style={{border:'1px solid #343434', borderRadius:'16px'}} id="mood" onChange={(e)=>setSelectedMood(e.target.value)} value={selectedMood} >
      <option value="" disabled selected>
        Select Mood
      </option>
@@ -96,7 +96,7 @@ useEffect(() => {
 
    <label className="max-sm:flex" htmlFor="genre">Genre:</label>
    
-   <select id="genre" onChange={(e)=> setSelectedGenre(e.target.value)} value={selectedGenre}>
+   <select style={{border:'1px solid #343434', borderRadius:'16px'}} id="genre" onChange={(e)=> setSelectedGenre(e.target.value)} value={selectedGenre}>
      <option value="" disabled selected>
        Select Genre
      </option>
@@ -110,11 +110,15 @@ useEffect(() => {
    
 
 <div className="button-container flex">
-<a href={`/sort?mood=${selectedMood}&genre=${selectedGenre}`}
-    className="flex mt-3 ml-2">Apply</a>
 
-<a href="/"
-    className="flex mt-3 ml-2">Reset</a>
+  <div  className='mt-3' style={{border:'1px solid #343434 ', borderRadius:'16px'}}>
+<a className='p-4' href={`/sort?mood=${selectedMood}&genre=${selectedGenre}`} 
+    >Apply</a>
+</div>
+<div  className='mt-3 ml-2' style={{border:'1px solid #343434 ', borderRadius:'16px'}}>
+<a className="p-4" href="/"
+  >Reset</a>
+    </div>
 </div>
 
 

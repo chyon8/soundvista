@@ -37,7 +37,7 @@ const MusicList = ({ music,userData }) => {
 
 
   return (
-    <div onClick={handleClick} className="flex mb-4 flex-col hover:bg-card-hover bg-card rounded-md shadow-lg p-3 m-2">
+    <div  onClick={handleClick} className="flex mb-4 flex-col hover:bg-card-hover bg-card rounded-md shadow-lg p-3 m-2">
       <div className="flex mt-1 ">
 
         <Image className="w-9 h-9" src={`https://source.unsplash.com/${music.artwork}`} alt="thumbnail" width={9} height={9} />

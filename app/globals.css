@@ -11,6 +11,7 @@ body {
 }
 
 @layer base {
+  bg-card
   h1,
   h2,
   h3,
