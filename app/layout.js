@@ -18,6 +18,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+        <NextAuthProvider>
+          <AudioProvider>
+            <TabsProvider>
 <head>
 <link rel="shortcut icon" href="images/favicon.ico" />
 <script async src="https://tally.so/widgets/embed.js"></script>
@@ -25,9 +28,7 @@ export default function RootLayout({ children }) {
 
 </head>
       <body className={inter.className}>
-        <NextAuthProvider>
-          <AudioProvider>
-            <TabsProvider>
+      
           <div className="flex flex-col h-screen max-h-screen">
             <Navbar />
             <div className="flex-grow overflow-y-auto bg-page text-default-text">
@@ -43,14 +44,19 @@ Terms and Conditions 2024
     </div>
 
 
+    <Footer/>
 
-   <Footer/>
           </div>
-          </TabsProvider>
+     
+       
+      </body>
+
+ 
+
+
+      </TabsProvider>
           </AudioProvider>
         </NextAuthProvider>
-    
-      </body>
     </html>
   );
 }

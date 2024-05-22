@@ -48,6 +48,14 @@ const authOptions = {
 
       return user;
     },
+    
+    async session({ session, token, user }) {
+      const userData = await User.findOne({ email: session.user.email });
+      if (userData) {
+        session.user.subscribed = userData.subscribed;
+      }
+      return session;
+    },
   
     
   },

@@ -5,6 +5,7 @@ import { faDownload,faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const DownloadBlock = ({ id,audioFileTitle,userData }) => {
 
@@ -15,7 +16,8 @@ const router = useRouter()
 
 useEffect(() => {
 
-  
+ setIsSubscribed(session?.user?.subscribed)
+
   if(userData && Object.keys(userData.downloads).includes(id)){
     setIsFavorite(true);
   }
@@ -82,16 +84,21 @@ useEffect(() => {
   };
 
 
-
-  // Step 2: Update the UI based on the user's favorite status
-
-//icon={isFavorite ? faHeart : faHeartRegular}
   return (
+    <>
+    {isSubscribed ?(<FontAwesomeIcon
+      icon={isDownload ?faCheck  :faDownload}
+      className="hover:cursor-pointer hover:text-red-200"
+      onClick={addToDownload}
+    />):(   <Link style={{marginTop:'-5px'}} href={'/access'}>
     <FontAwesomeIcon
       icon={isDownload ?faCheck  :faDownload}
       className="hover:cursor-pointer hover:text-red-200"
       onClick={addToDownload}
     />
+    </Link>)}
+    </>
+ 
   );
 };
 
