@@ -19,7 +19,7 @@ useEffect(() => {
  setIsSubscribed(session?.user?.subscribed)
 
   if(userData && Object.keys(userData.downloads).includes(id)){
-    setIsFavorite(true);
+    setIsDownload(true);
   }
   
    }, [userData]);
